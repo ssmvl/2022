@@ -123,7 +123,7 @@ timeline.push({
   timeline: [
     { stimulus:
         `<p>In this experiment, you will complete 3 tests<br>
-        each takes less than or around 10 minutes.<br>
+        and each test will take less than 10 minutes.<br>
         Press the <span class="resp-key">Space bar</span> to continue.</p>`,
       choices: [' '] },
     { stimulus:
