@@ -491,7 +491,7 @@
       <br> 5) You will judge the font-weight diversity of the 5 x 5 array.\
       <br> <br> BUT please remember that it is more important to \
       report the letter in the black square correctly.\
-      <br> Before practice, let's see how high/low diversity letters look like.</p>",
+      Before practice, let's see how high/low diversity letters look like.</p>",
       choices: ['Next']
     };
     timeline.push(practice1);
