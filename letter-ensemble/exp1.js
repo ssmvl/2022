@@ -152,12 +152,12 @@
     var instructions = {
       type: jsPsychHtmlButtonResponse,
       stimulus: 
-        '<p><img src="https://ssmvl.github.io/2022/letter-ensemble/letter-imgs/pro1.png"> \
-        <br> <br> Once you start a trial, \
-        <br> 1) A black rectangle will indicate the row you need to remember\
-        <br> 2) Then, 5 x 5 array of letters will be flashed quickly\
-        <br> 3) You will choose the letter presented in the location of the black square (here, it is T)\
-        <br> 4) Feedback (correct/wrong) will be provided</p>'
+        '<p><img src="https://ssmvl.github.io/2022/letter-ensemble/letter-imgs/pro1.png">\
+        <br> <br> Once you start a trial,\
+        <br> 1) A black rectangle will indicate the row you need to remember.\
+        <br> 2) Then, 5 x 5 array of letters will be flashed quickly.\
+        <br> 3) You will choose the letter presented in the location of the black square (here, it is T).\
+        <br> 4) Feedback (correct/wrong) will be provided.</p>'
       ,
       choices: ["Let's practice"]
     };
@@ -502,7 +502,7 @@
       <br> <br> In this example,\
       <br> a) has low diversity since all letters are thin,\
       <br> b) also low diversity since all letters are thick,\
-      <br> c) has high diversity since letters have varying weights\
+      <br> c) has high diversity since letters have varying weights.\
       <br> <br> In this task, diversity can be somewhere in between low (a, b) and high (c).\
       <br> You need to decide your own criterion, and use it throughout the task.</p>',
       choices: ["Let's practice"]
