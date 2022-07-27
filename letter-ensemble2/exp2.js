@@ -419,6 +419,7 @@
           cue: row + 1,
           adj_div: adj_div,
           far_div: far_div,
+          rcue_color: color,
           task: 'array'
         };
       }
