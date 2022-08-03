@@ -484,6 +484,7 @@
       data: function() {
         var precue_loc = jsPsych.timelineVariable('precue_loc');
         var target_loc = jsPsych.timelineVariable('target_loc');
+        var color = jsPsych.timelineVariable('rcue_color');
         var letter_array = jsPsych.data.get().last(2).values()[0].letter_array;
         var corr_resp = letter_array[(precue_loc - 1) * 5 + (target_loc - 1)];
         return {
