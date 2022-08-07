@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CFMT - jsPsych</title>
+    <script src="https://unpkg.com/jspsych@7.2.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.0"></script>
+    <script src="libraries/jspsych-cfmt-vars.js"></script>
+    <link href="https://unpkg.com/jspsych@7.2.1/css/jspsych.css" rel="stylesheet" type="text/css">
+    <style>
+      .jspsych-cfmt { font-size: 18pt; line-height: 24pt; }
+      .jspsych-cfmt .cfmt-text, .jspsych-cfmt .cfmt-img { margin: 10pt 0; }
+      .jspsych-cfmt .resp-key { display: inline-block; min-width: 16pt; padding: 0 4pt;
+        border: 1px solid #999; border-radius: 4px; background-color: #f9f9f9;}
+      .jspsych-cfmt p.cfmt-img img { margin: 0 auto; }
+      .jspsych-cfmt table.cfmt-resp { width: 576px; margin: 0 auto; border-spacing: 0; }
+      .jspsych-cfmt table.cfmt-resp td { padding: 0; }
+    </style>
+  </head>
+  <body></body>
+  <script>
+    // jsPsych initialization
+    var jsPsych = initJsPsych({
+      experiment_width: 800,
+      on_finish: function(){
+        jsPsych.data.displayData();
+      }
+    });
+
+    // jsPsych timeline
+    var timeline = [];
+
+    // preload images
+    timeline.push({
+      type: jsPsychPreload,
+      images: CFMTimgs,
+      message: '<p>Loading experiment&hellip;</p>'
+    });
+
+    // CFMT
+    timeline.push({
+      type: jsPsychHtmlKeyboardResponse,
+      css_classes: ['jspsych-cfmt'],
+      post_trial_gap: 500,
+      on_finish: function(data) {
+        if (data.hasOwnProperty('correct_response') && data.hasOwnProperty('response')) {
+          data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+        }
+      },
+      data: { exp_task: 'CFMT' },
+      timeline: CFMTtseq
+    });
+
+    // run experiment
+    jsPsych.run(timeline);
+  </script>
+</html>

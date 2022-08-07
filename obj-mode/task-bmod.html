@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blob Mode Task - jsPsych</title>
+    <script src="https://unpkg.com/jspsych@7.2.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.0"></script>
+    <script src="libraries/jspsych-bmod-vars.js"></script>
+    <link href="https://unpkg.com/jspsych@7.2.1/css/jspsych.css" rel="stylesheet" type="text/css">
+    <style>
+      .jspsych-bmod { font-size: 16pt; line-height: 24pt; }
+      .jspsych-bmod .bmod-text, .jspsych-bmod .bmod-img { margin: 8pt 0; }
+      .jspsych-bmod .bmod-text { min-width: 720px; min-height: 80pt; }
+      .jspsych-bmod .resp-key { display: inline-block; min-width: 18pt; padding: 0 3pt;
+        border: 1px solid #999; border-radius: 4px; background-color: #f9f9f9;}
+      .jspsych-bmod .hint { color: #888; }
+    </style>
+  </head>
+  <body></body>
+  <script>
+    // jsPsych initialization
+    var jsPsych = initJsPsych({
+      experiment_width: 800,
+      on_finish: function(){
+        jsPsych.data.displayData();
+      }
+    });
+
+    // jsPsych timeline
+    var timeline = [];
+
+    // preload images
+    timeline.push({
+      type: jsPsychPreload,
+      images: BMODimgs,
+      message: '<p>Loading experiment&hellip;</p>'
+    });
+
+    // face mode judgment
+    timeline.push({
+      type: jsPsychHtmlKeyboardResponse,
+      css_classes: ['jspsych-bmod'],
+      on_finish: function(data) {
+        if (data.hasOwnProperty('correct_response') && data.hasOwnProperty('response')) {
+          data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+        }
+      },
+      data: { exp_task: 'BMOD' },
+      timeline: BMODtseq
+    });
+
+    // run experiment
+    jsPsych.run(timeline);
+  </script>
+</html>
