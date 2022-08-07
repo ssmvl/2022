@@ -170,7 +170,7 @@
           <br> <br> Once you start a trial,\
           <br> 1) A black or red rectangle will indicate the row you need to remember.\
           <br> 2) Then, 5 x 5 array of letters will be flashed quickly (ignore the noise at the cued row).\
-          <br> 3) You will choose the letter presented in the location of the black or red square (here, it is K/M).\
+          <br> 3) You will choose the letter presented in the location of the black or red square (here, it is T/R).\
           <br> 4) Feedback (correct/wrong) will be provided.</p>'
         ,
         choices: ["Let's practice"]
@@ -484,6 +484,7 @@
       data: function() {
         var precue_loc = jsPsych.timelineVariable('precue_loc');
         var target_loc = jsPsych.timelineVariable('target_loc');
+        var color = jsPsych.timelineVariable('rcue_color');
         var letter_array = jsPsych.data.get().last(2).values()[0].letter_array;
         var corr_resp = letter_array[(precue_loc - 1) * 5 + (target_loc - 1)];
         return {
