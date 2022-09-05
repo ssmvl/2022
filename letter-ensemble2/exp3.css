@@ -1,0 +1,50 @@
+      body { background-color: #eee; }
+
+      .squareback { 
+        background-color: #fff; margin: 0 auto; width: 375px; height: 375px; 
+        display: flex; align-items: center; justify-content: center; 
+      }
+      
+      table.grid-5x1 { border: none; background-color: #fff; margin: 0 auto;  width: 375px; height: 375px; }
+      table.grid-5x1 td {
+        border: none; width: 375px; height: 75px; margin: 0 auto;
+        background-size: 375px 75px; background-repeat: no-repeat;
+      }      
+      table.grid-5x5 { border: none; background-color: #fff; margin: 0 auto; width: 375px; height: 375px; }
+      table.grid-5x5 td {
+        border: none; width: 75px; height: 75px; margin: 0 auto;
+        background-size: 75px 75px; background-repeat: no-repeat;
+      }
+
+      table.show-rcue-1x1_k td.rcue-1x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/rcue-img_k.png); }
+      table.show-rcue-2x1_k td.rcue-2x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/rcue-img_k.png); }
+      table.show-rcue-3x1_k td.rcue-3x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/rcue-img_k.png); }
+      table.show-rcue-4x1_k td.rcue-4x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/rcue-img_k.png); }
+      table.show-rcue-5x1_k td.rcue-5x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/rcue-img_k.png); }
+
+
+      table.show-cue-1x1_k td.cue-1x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-1x2_k td.cue-1x2 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-1x3_k td.cue-1x3 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-1x4_k td.cue-1x4 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-1x5_k td.cue-1x5 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-2x1_k td.cue-2x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-2x2_k td.cue-2x2 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-2x3_k td.cue-2x3 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-2x4_k td.cue-2x4 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-2x5_k td.cue-2x5 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-3x1_k td.cue-3x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-3x2_k td.cue-3x2 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-3x3_k td.cue-3x3 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-3x4_k td.cue-3x4 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-3x5_k td.cue-3x5 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-4x1_k td.cue-4x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-4x2_k td.cue-4x2 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-4x3_k td.cue-4x3 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-4x4_k td.cue-4x4 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-4x5_k td.cue-4x5 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-5x1_k td.cue-5x1 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-5x2_k td.cue-5x2 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-5x3_k td.cue-5x3 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-5x4_k td.cue-5x4 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
+      table.show-cue-5x5_k td.cue-5x5 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble2/letter-imgs/cue-img_k.png); }
