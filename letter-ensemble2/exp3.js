@@ -470,6 +470,7 @@
         var corr_resp = letter_array[(precue_loc - 1) * 5 + (target_loc - 1)];
         return {
           task: 'response',
+          noise: jsPsych.timelineVariable('noise'),
           adj_div: jsPsych.timelineVariable('adj_div'),
           far_div: jsPsych.timelineVariable('far_div'),
           precue_loc: precue_loc,
@@ -507,6 +508,7 @@
       data: function() {
         return {
           task: 'diversity',
+          noise: jsPsych.timelineVariable('noise'),
           adj_div: jsPsych.timelineVariable('adj_div'),
           far_div: jsPsych.timelineVariable('far_div'),
           precue_loc: jsPsych.timelineVariable('precue_loc'),
