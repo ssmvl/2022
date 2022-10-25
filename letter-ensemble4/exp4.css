@@ -1,16 +1,16 @@
       body { background-color: #eee; }
 
       .squareback { 
-        background-color: #fff; margin: 0 auto; width: 375px; height: 525px; 
+        background-color: #fff; margin: 0 auto 30px auto; width: 375px; height: 525px; 
         display: flex; align-items: center; justify-content: center; 
       }
       
-      table.grid-7x1 { border: none; background-color: #fff; margin: 0 auto;  width: 375px; height: 525px; }
+      table.grid-7x1 { border: none; background-color: #fff; margin: 0 auto 30px auto;  width: 375px; height: 525px; }
       table.grid-7x1 td {
         border: none; width: 375px; height: 75px; margin: 0 auto;
         background-size: 375px 75px; background-repeat: no-repeat;
       }      
-      table.grid-7x5 { border: none; background-color: #fff; margin: 0 auto; width: 375px; height: 525px; }
+      table.grid-7x5 { border: none; background-color: #fff; margin: 0 auto 30px auto; width: 375px; height: 525px; }
       table.grid-7x5 td {
         border: none; width: 75px; height: 75px; margin: 0 auto;
         background-size: 75px 75px; background-repeat: no-repeat;
@@ -59,3 +59,6 @@
       table.show-cue-7x3 td.cue-7x3 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/cue-img.png); }
       table.show-cue-7x4 td.cue-7x4 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/cue-img.png); }
       table.show-cue-7x5 td.cue-7x5 { background-image: url(https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/cue-img.png); }
+
+      .memory-task-resp #jspsych-html-button-response-btngroup { height: 81px; }
+      .diversity-task-resp #jspsych-html-button-response-btngroup { height: 35px; }

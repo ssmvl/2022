@@ -170,7 +170,7 @@
       type: jsPsychHtmlButtonResponse,
       stimulus: 
         '<p><img src="https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/pro1_b.png">\
-        <br> <br> In some trials, array with gaps above and below the row given the cue is presented.\
+        <br> <br> In some trials, there will be gaps above and below the row to remember.\
         <br> BUT your task is the same. </p>'
       ,
       choices: ["Let's practice"]
@@ -198,7 +198,7 @@
 
     var fixation = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<div class="squareback" style="font-size: 60px;" "font-weigh: bold;">+</div>',
+      stimulus: '<div class="squareback" style="font-size: 60px;" "font-weigh: bold;">+</div><p style="height: 63px;">&nbsp;</p>',
       choices: "NO_KEYS",
       trial_duration: 500, //milliseconds
       data: {
@@ -232,7 +232,8 @@
       <tr>
         <td class="rcue-7x1 rcue-img"></td>
       </tr>
-    </table>`},
+    </table>
+    <p style="height: 63px;">&nbsp;</p>`},
         choices: "NO_KEYS",
         trial_duration: 300,
         data: {
@@ -297,7 +298,8 @@
               <td style="background-image: url(https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/`+trial.data.letter_array[33]+`_`+trial.data.width_array[33]+`.png)"></td>
               <td style="background-image: url(https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/`+trial.data.letter_array[34]+`_`+trial.data.width_array[34]+`.png)"></td>
             </tr>
-          </table>`;
+          </table>
+          <p style="height: 63px;">&nbsp;</p>`;
       },
       data: function () {
         var trial_letter = Array(35);
@@ -376,7 +378,7 @@
 
     var blank = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<div class="squareback"></div>',
+      stimulus: '<div class="squareback"></div><p style="height: 63px;">&nbsp;</p>',
       choices: "NO_KEYS",
       trial_duration: 900,
       data: {
@@ -388,6 +390,7 @@
 
     var test = {
       type: jsPsychHtmlButtonResponse,
+      css_classes: ['memory-task-resp'],
       stimulus: function() {
         var row = jsPsych.timelineVariable('precue_loc');
         var col = jsPsych.timelineVariable('target_loc');
@@ -469,9 +472,9 @@
       stimulus: function(){
         var last_trial_correct = jsPsych.data.get().last(1).values()[0].correct;
         if(last_trial_correct){
-          return "<div class='squareback'></div> <p>Correct</p>";
+          return '<div class="squareback"></div> <p style="height: 63px;">Correct</p>';
         } else {
-          return "<div class='squareback'></div> <p>Wrong</p>";
+          return '<div class="squareback"></div> <p style="height: 63px;">Wrong</p>';
         }
       },
       choices: "NO_KEYS",
@@ -483,8 +486,9 @@
 
     var diversity = {
       type: jsPsychHtmlButtonResponse,
+      css_classes: ['diversity-task-resp'],
       stimulus: '<div class="squareback"></div>\
-      <p>font-weight diversity?</p>',
+      <p style="height: 28px;">font-weight diversity?</p>',
       choices: ['Low', 'High'],
       data: function() {
         return {
@@ -525,12 +529,12 @@
       stimulus: '<p><img src="https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/div.png">\
       <br> <br> In this example,\
       <br> a) has low diversity since all letters are thin,\
-      <br> b) also low diversity since all letters are thick,\
+      <br> b) also has low diversity since all letters are thick,\
       <br> c) has high diversity since letters have varying weights.\
       <br> d) has high diversity since letters have varying weights. \
-      <br> <br> In this task, array may have a gaps (d) or not (a, b, c).\
-      <br> diversity can be somewhere in between low (a, b) and high (c, d).\
-      <br> You need to decide your own criterion, and use it throughout the task.</p>',
+      <br> <br>Diversity can be somewhere in between low (a, b) and high (c, d).\
+      <br> You need to decide your own criterion, and use it throughout the task.\
+      <br> Remember that gaps are irrelevant to the diversity of 25 letters.</p>',
       choices: ["Let's practice"]
     };
     timeline.push(practice2);
