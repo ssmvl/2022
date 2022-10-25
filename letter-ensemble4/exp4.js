@@ -107,7 +107,7 @@
         });
       }
     };
-    //timeline.push(consent_form);
+    timeline.push(consent_form);
 
     var demo_info = {
       type: jsPsychSurvey,
@@ -138,7 +138,7 @@
       ],
       button_label_finish: 'Continue to Experiment'
     };
-    //timeline.push(demo_info);
+    timeline.push(demo_info);
 
     var preload = {
       type: jsPsychPreload,
@@ -386,8 +386,6 @@
       }
     };
 
-    //table style="margin: 61px auto 30px;"
-
     var test = {
       type: jsPsychHtmlButtonResponse,
       css_classes: ['memory-task-resp'],
@@ -508,7 +506,7 @@
       repetitions: 2,
       randomize_order: true
     };
-    //timeline.push(prac1_procedure);
+    timeline.push(prac1_procedure);
 
 
     var practice1 = {
@@ -545,7 +543,7 @@
       repetitions: 1,
       randomize_order: true
     };
-    //timeline.push(prac2_procedure);
+    timeline.push(prac2_procedure);
 
 
     var start = {
