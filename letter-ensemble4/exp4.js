@@ -17,6 +17,7 @@
       for (let w = 0; w < width.length; w++) {
         all_imgs.push('https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/'+letter[l]+'_'+width[w]+'.png');
       }
+      all_imgs.push('https://ssmvl.github.io/2022/letter-ensemble4/letter-imgs/'+letter[l]+'_blank.png');
     }
     var time_imgs = [];
     for (let i = 1; i < 52; i++) {
@@ -307,7 +308,7 @@
           trial_letter[i] = letter[Math.floor(Math.random()*9)];
         }
         
-        var trial_width = Array(35);
+        var trial_width = Array(35).fill('blank');
         var row = jsPsych.timelineVariable('precue_loc') - 1;
         var div = jsPsych.timelineVariable('div');
         var condition = jsPsych.timelineVariable('gap');
