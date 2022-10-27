@@ -1,0 +1,6 @@
+.jspsych-mmq .preamble { font-size: 1.5em;}
+.jspsych-mmq .mmq-table { border-collapse: collapse; border-spacing: 0; border: none; margin: 0 auto 1.5em auto; }
+.jspsych-mmq .mmq-table .odd-row { background-color: #eee; }
+.jspsych-mmq .mmq-table td { padding: 3px; }
+.jspsych-mmq .input-freq input { height: 1.5em; width: 4em; }
+.jspsych-mmq .mmq-table .opt-mt { width: 5em; text-align: center; border-left: 3px solid #fff; }
