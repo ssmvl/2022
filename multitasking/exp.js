@@ -18,12 +18,9 @@ const m_corr_ans = [1, 2, 1, 1, 1, 2, 2, 3, 2, 3, 3, 3, 2, 1, 3, 1, 1, 3, 1, 1, 
 const wm_corr_ans = [2, 1, 1, 3, 1, 2, 1, 2, 3, 3, 3, 3, 2, 2, 1, 1, 3, 1, 2, 2, 2, 1, 3, 3];
 
 var all_imgs = [];
-all_imgs.push(base_url + 'img/p_ins1.png');
 all_imgs.push(base_url + 'img/p_ins2.png');
-all_imgs.push(base_url + 'img/q_ins1.png');
 all_imgs.push(base_url + 'img/q_ins2.png');
 all_imgs.push(base_url + 'img/t_ins.png');
-all_imgs.push(base_url + 'img/wm_ins.png');
 
 var p_rsvp_imgs = [];
 for (let t = 1; t <= p_num_frames.length; t++) {
@@ -201,6 +198,12 @@ var fullscreen = {
 timeline.push(fullscreen);
 
 
+var muq_ins = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `<p>First, you will answer a questionnaire about your media usage.</p>`,
+    choices: ['Continue']
+};
+timeline.push(muq_ins);
 
 
 
@@ -282,15 +285,26 @@ for (let m = 0; m < 12; m++) {
 
 
 var p_ins1 = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: base_url + 'img/p_ins1.png',
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
+    <p>Welcome to the experiment!</p>
+    <p>In this experiment, you will view a sequence of simple shapes in the center of the screen.<br>
+    The number of shapes in the sequence will be different from sequence to sequence.<br>
+    Once the sequence ends, you will be asked which shape was <span style="text-decoration: underline;">the second to the last</span>.</p>
+    <p>Let's take a look at the example screen.<br>
+    Press space bar to continue.</p>`,
   choices: [' ']
 };
 timeline.push(p_ins1);
 
 var p_ins2 = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: base_url + 'img/p_ins2.png',
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
+    <img src="` + base_url + `img/p_ins2.png">
+    <p>Here, the last picture is a triangle, and the second to the last shape is a square.<br>
+    So the correct answer is a square.<br>
+    Pleases pay attention to the screen and respond as accurately as possible.</p>
+    <p>Let's practice. Press space bar to continue.</p>`,
   choices: [' ']
 };
 timeline.push(p_ins2);
@@ -367,15 +381,24 @@ var p_trials = {
 timeline.push(p_trials);
 
 var q_ins1 = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: base_url + 'img/q_ins1.png',
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
+    <p>This time, you need to do a secondary task while viewing a picture sequence.<br>
+    The secondary task is to distinguish the gender of a face presented in one of the 4 corners.<br>
+    Once the sequence ends, you will be asked which shape was <span style="text-decoration: underline;">the second to the last</span>.</p>
+    <p>Press space bar to continue.</p>`,
   choices: [' ']
 };
 timeline.push(q_ins1);
 
 var q_ins2 = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: base_url + 'img/q_ins2.png',
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
+    <img src="` + base_url + `img/q_ins2.png">
+    <p>When you see a face image in a picture sequence,<br>
+    Press the <span style="color: blue">key [A]</span> if the face is a <span style="color: blue">male</span>, and press the <span style="color: red">key [L]</span> if it is a <span style="color: red">female</span>,<br>
+    while the face was on screen. A face image can appear multiple times during a sequence.</p>
+    <p>Let's practice. Press space bar to continue.</p>`,
   choices: [' ']
 };
 timeline.push(q_ins2);
@@ -387,8 +410,15 @@ var q_trials = {
 timeline.push(q_trials);
 
 var t_ins = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: base_url +  'img/t_ins.png',
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
+    <img src="` + base_url + `img/t_ins.png">
+    <p>Now, let's start main task. In the main task:<br>
+    1) You will view a sequence of pictures instead of simple shapes<br>
+    2) You will not be given feedback (correct/wrong) for the second-to-the-last image task</p>
+    
+    <p>Let's start the main task. Please respond as quickly and accurately as possible.<br>
+    Press space bar to continue.</p>`,
   choices: [' ']
 };
 timeline.push(t_ins);
@@ -401,8 +431,12 @@ timeline.push(m_trials);
 
 //wm
 var wm_ins = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: base_url + 'img/wm_ins.png',
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `
+    <p>This time, your memory will be tested.</p>
+    <p>You will see three pictures and choose the one that you saw during this experiment.<br>
+    There will be 24 trials of the memory test.</p>
+    <p>Press space bar to begin.</p>`,
   choices: [' ']
 };
 timeline.push(wm_ins);
