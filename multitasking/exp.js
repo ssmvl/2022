@@ -97,9 +97,12 @@ var jsPsych = initJsPsych({
   experiment_width: 800,
   use_webaudio: false,
   on_finish: function(){
-    jsPsych.data.displayData();
-    // prolofic integration
-    //window.location = 'https://app.prolific.co/submissions/complete?cc=XXXXXXX';
+    if (!window.hasOwnProperty('RUN_ID')) {
+      jsPsych.data.displayData();
+    } else if (!window.hasOwnProperty('LAST_MSG')) {
+      // prolofic integration
+      //window.location = "https://app.prolific.co/submissions/complete?cc=XXXXXXX";
+    }
   }
 });
 
@@ -130,10 +133,8 @@ var browser_check = {
         '<p>You must use Chrome, Edge, or Firefox to participate in this experiment.</p>');
     if (window.hasOwnProperty('RUN_ID')) {  // cognition.run workaround
       window.LAST_MSG = last_msg;
-      return '';
-    } else {
-      return last_msg;
     }
+    return last_msg;
   }
 };
 timeline.push(browser_check);
