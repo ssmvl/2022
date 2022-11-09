@@ -80,17 +80,6 @@ for (let t = 1; t <= m_num_frames.length; t++) {
   });
 }
 
-var wm_rsvp_imgs = [];
-for (let t = 1; t <= 24; t++) {
-  let wm_img = [];
-  wm_img.push(base_url + 'img/wm' + t + '.png');
-  all_imgs = all_imgs.concat(wm_img);
-  wm_rsvp_imgs.push({
-    stimuli: wm_img,
-    corr_ans: wm_corr_ans[t-1]
-  });
-}
-
 
 
 var jsPsych = initJsPsych({
@@ -188,7 +177,7 @@ timeline.push({
 
 var preload_imgs = {
   type: jsPsychPreload,
-  images: all_imgs
+  images: [].concat(all_imgs, CFMTimgs, FDIVimgs)
 };
 timeline.push(preload_imgs);
 
@@ -201,7 +190,10 @@ timeline.push(fullscreen);
 
 var muq_ins = {
   type: jsPsychHtmlButtonResponse,
-  stimulus: `<p>First, you will answer a questionnaire about your media usage.</p>`,
+  stimulus: `
+    <p>In this experiment, you will complete one questionnaire about your media usage.<br>
+    Then you will complete three different tasks, and each will take around 10 minutes.<br>
+    First, let's begin with a questionnaire.</p>`,
     choices: ['Continue']
 };
 timeline.push(muq_ins);
@@ -237,7 +229,8 @@ var MMI_p1 = {
   type: jsPsychSurveyHtmlForm,
   css_classes: 'jspsych-mmq',
   preamble: '<p class="preamble">How many hours per week do you use the following media?</p>',
-  html: p1_html
+  html: p1_html,
+  data: { exp_task: 'mmq' },
 };
 timeline.push(MMI_p1);
 
@@ -276,7 +269,8 @@ for (let m = 0; m < 12; m++) {
     type: jsPsychSurveyHtmlForm,
     css_classes: 'jspsych-mmq',
     preamble: '<p class="preamble">While using <span style="font-style: italic;">' + media_names[m] + '</span>, how much do you concurrently use the following media? [' + (m+1) + '/12]</p>',
-    html: p2_html
+    html: p2_html,
+    data: { exp_task: 'mmq' },
   };
   timeline.push(MMI_p2);
 }
@@ -288,8 +282,7 @@ for (let m = 0; m < 12; m++) {
 var p_ins1 = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
-    <p>Welcome to the experiment!</p>
-    <p>In this experiment, you will view a sequence of simple shapes in the center of the screen.<br>
+    <p>In the first task, you will view a sequence of simple shapes in the center of the screen.<br>
     The number of shapes in the sequence will be different from sequence to sequence.<br>
     Once the sequence ends, you will be asked which shape was <span style="text-decoration: underline;">the second to the last</span>.</p>
     <p>Let's take a look at the example screen.<br>
@@ -345,14 +338,14 @@ var rsvp_stim = {
   choices: ['a', 'l'],
   prompt: '<p>[A] for male, [L] for female</p>',
   post_trial_gap: 500,
-  data: { task_type: 'rsvp' }
+  data: { exp_task: 'multi', task_type: 'rsvp' }
 };
 var main_resp = {
   type: jsPsychImageKeyboardResponse,
   stimulus: jsPsych.timelineVariable('resp_img'),
   prompt: '<p>Which is the second to the last image?</p>',
   choices: ['1', '2', '3'],
-  data: { task_type: '2back' },
+  data: { exp_task: 'multi', task_type: '2back' },
   on_finish: function(data) {
     var corr_ans = jsPsych.timelineVariable('corr_ans');
     if (Number(data.response) == corr_ans) {
@@ -430,39 +423,85 @@ var m_trials = {
 }
 timeline.push(m_trials);
 
-//wm
-var wm_ins = {
-  type: jsPsychHtmlKeyboardResponse,
-  stimulus: `
-    <p>This time, your memory will be tested.</p>
-    <p>You will see three pictures and choose the one that you saw during this experiment.<br>
-    There will be 24 trials of the memory test.</p>
-    <p>Press space bar to begin.</p>`,
-  choices: [' ']
-};
-timeline.push(wm_ins);
 
-var wm_resp = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: jsPsych.timelineVariable('stimuli'),
-  prompt: '<p>Which image did you see?</p>',
-  choices: ['1', '2', '3'],
-  post_trial_gap: 400,
-  data: { task_type: 'memory' },
-  on_finish: function(data) {
-    var corr_ans = jsPsych.timelineVariable('corr_ans');
-    if (Number(data.response) == corr_ans) {
-      data.correct = true;
-    } else {
-      data.correct = false;
-    }
-  }
-};
-var wm_trials = {
-  timeline: [wm_resp],
-  timeline_variables: wm_rsvp_imgs 
+// 30-sec break
+var break_timeline = Array(10);
+for (let s = 0; s <= 10; s++) {
+  break_timeline[s] = {
+    trial_duration: (s < 10 ? 3000 : 100),
+    stimulus: `
+      <p>Please take a break for 30 seconds.</p>
+      <div class="break-bar-outer"><div class="break-bar-inner" style="width: ` + (s*15) + `px;"></div></div>`
+  };
 }
-timeline.push(wm_trials);
+timeline.push({
+  type: jsPsychHtmlKeyboardResponse,
+  css_classes: ['jspsych-instr'],
+  choices: 'NO_KEYS',
+  timeline: break_timeline
+});
+
+
+// CFMT, FDIV common instruction
+timeline.push({
+  type: jsPsychHtmlKeyboardResponse,
+  css_classes: ['jspsych-instr'],
+  timeline: [
+    { stimulus:
+        `<p>In the following two tasks, you will use J, K, L keys and/or the space bar.<br>
+        Please place your fingers on J, K, L keys and<br>
+        press the <span class="resp-key">J</span> key.</p>`,
+      choices: ['j'] },
+    { stimulus: `<p>Then press the <span class="resp-key">K</span> key.</p>`,
+      choices: ['k'] },
+    { stimulus: `<p>Finally press the <span class="resp-key">L</span> key.</p>`,
+      choices: ['l'] },
+    { stimulus:
+        `<p>Let&rsquo;s start the second test. Instructions and practice<br>
+        trials will be given in the beginnig of each task.<br>
+        Press the <span class="resp-key">Space bar</span> to continue.</p>`,
+      choices: [' '] }
+  ]
+});
+
+
+// CFMT
+timeline.push({
+  type: jsPsychHtmlKeyboardResponse,
+  css_classes: ['jspsych-cfmt'],
+  post_trial_gap: 500,
+  on_finish: function(data) {
+    if (data.hasOwnProperty('correct_response') && data.hasOwnProperty('response')) {
+      data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+    }
+  },
+  data: { exp_task: 'CFMT' },
+  timeline: CFMTtseq
+});
+
+
+// instruction - FDIV
+timeline.push({
+  type: jsPsychHtmlKeyboardResponse,
+  css_classes: ['jspsych-instr'],
+  stimulus: `<p>Press the <span class="resp-key">Space bar</span> to begin the final task.</p>`,
+  choices: [' ']
+});
+
+
+// Face diversity judgment
+timeline.push({
+  type: jsPsychHtmlKeyboardResponse,
+  css_classes: ['jspsych-fdiv'],
+  on_finish: function(data) {
+    if (data.hasOwnProperty('correct_response') && data.hasOwnProperty('response')) {
+      data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_response);
+    }
+  },
+  data: { exp_task: 'FDIV' },
+  timeline: FDIVtseq
+});
+
 
 // almost-there page
 timeline.push({

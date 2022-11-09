@@ -4,3 +4,24 @@
 .jspsych-mmq .mmq-table td { padding: 3px; }
 .jspsych-mmq .input-freq input { height: 1.5em; width: 4em; }
 .jspsych-mmq .mmq-table .opt-mt { width: 5em; text-align: center; border-left: 3px solid #fff; }
+
+.jspsych-instr { font-size: 16pt; line-height: 24pt; }
+.jspsych-instr .resp-key { display: inline-block; min-width: 18pt; padding: 0 3pt;
+  border: 1px solid #999; border-radius: 4px; background-color: #f9f9f9;}
+.jspsych-instr .break-bar-outer { margin: 0 auto; width: 150px; height: 30px; border: 1px solid #aaa; border-radius: 4px; }
+.jspsych-instr .break-bar-inner { height: 30px; border-radius: 3px; background-color: #ddd; }
+
+.jspsych-fdiv { font-size: 16pt; line-height: 24pt; }
+.jspsych-fdiv .fdiv-text, .jspsych-fdiv .fdiv-img { margin: 8pt 0; }
+.jspsych-fdiv .fdiv-text { min-width: 720px; min-height: 80pt; }
+.jspsych-fdiv .resp-key { display: inline-block; min-width: 18pt; padding: 0 3pt;
+  border: 1px solid #999; border-radius: 4px; background-color: #f9f9f9;}
+.jspsych-fdiv .hint { color: #888; }
+
+.jspsych-cfmt { font-size: 18pt; line-height: 24pt; }
+.jspsych-cfmt .cfmt-text, .jspsych-cfmt .cfmt-img { margin: 10pt 0; }
+.jspsych-cfmt .resp-key { display: inline-block; min-width: 16pt; padding: 0 4pt;
+  border: 1px solid #999; border-radius: 4px; background-color: #f9f9f9;}
+.jspsych-cfmt p.cfmt-img img { margin: 0 auto; }
+.jspsych-cfmt table.cfmt-resp { width: 576px; margin: 0 auto; border-spacing: 0; }
+.jspsych-cfmt table.cfmt-resp td { padding: 0; }
